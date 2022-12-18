@@ -3,7 +3,7 @@
 $host="localhost";
 $user="root";
 $password="";
-$db="youtube_rahden_adebos_crud_applied";
+$db="uas_fixed";
 
 $conn = mysqli_connect($host,$user,$password,$db);
 if (!$conn){

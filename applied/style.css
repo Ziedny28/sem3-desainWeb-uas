@@ -1,0 +1,201 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #B9B9B9;
+}
+
+.darkened-image {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('images/bromo-top.jpg');
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#btn-login {
+    color: white;
+}
+
+.top-links {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.top-links:hover {
+    color: #ffa500;
+    cursor: pointer;
+}
+
+.orange-text {
+    color: #ffa500
+}
+
+
+nav {
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+nav li {
+    margin: 0 30px;
+    width: 80px;
+}
+
+.grey-text {
+    color: #B9B9B9;
+}
+
+.white-text {
+    color: white;
+}
+
+.carousel-inner img {
+    filter: brightness(60%);
+    transition: filter .3s ease;
+}
+
+.carousel-inner h5 {
+    text-align: left;
+}
+
+.carousel-inner p {
+    text-align: left;
+}
+
+.card {
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.2);
+}
+
+.grey-text-body {
+    color: #808080
+}
+
+.comment-title-rating {
+    display: flex;
+}
+
+.flex {
+    display: flex;
+}
+
+.fade-orange-box {
+    background-color: #F5DE7A;
+    height: 500px;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.reveal.active {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.top-content {
+    background: linear-gradient(90deg, rgba(74, 74, 74, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    height: 800px;
+}
+
+.top-content hr {
+    color: white;
+
+}
+
+.destination-image-main {
+    width: 500px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.destination-image-main img {
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 200ms ease-in-out;
+}
+
+.destination-image-main img.blur:hover {
+    filter: blur(1px);
+}
+
+.destination-image-main img.zoom:hover {
+    transform: scale(1.1);
+}
+
+.destination-image-main>.content {
+    position: absolute;
+    inset: 0;
+    padding: 1rem;
+    background: rgba(32, 32, 32, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.destination-image-main>.content.fade {
+    opacity: 0;
+}
+
+.destination-image-main:hover>.content.fade {
+    opacity: 1;
+}
+
+
+.destination-image img {
+    width: 250px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.destination-images {
+    display: flex;
+}
+
+.login-left {
+    height: 100vh;
+    object-fit: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('images/bromo-top.jpg');
+    background-position: center center;
+}
+
+.login-orange {
+    height: 100vh;
+    background-color: #ffa500;
+}
+
+.login-form {
+    height: 100vh;
+    background-color: white;
+}
+
+.mt-200{
+    margin-top: 200px;
+}
+

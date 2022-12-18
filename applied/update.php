@@ -65,13 +65,20 @@
             //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
             if ($hasil) {
                 echo "
-            <script>
-            alert(`Data Berhasil diupdate`);
-            </script>
-            ";
-                header("Location:index.php");
+                <script>
+                alert(`Data Berhasil diubah`);
+                location.href = 'index-admin.php'
+                </script>
+
+                ";
             } else {
-                echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
+                echo "
+                <script>
+                alert(`Data Gagal diubah`);
+                location.href = 'index-admin.php'
+                </script>
+
+                ";
             }
         }
 
@@ -94,17 +101,17 @@
 
             <div class="form-group">
                 <label>Gambar 1:</label>
-                <input type="text" name="gambar_1" class="form-control" placeholder="Masukan Nama Gambar 1" required value="<?= $data_destinasi["gambar_1"] ?>"/>
+                <input type="text" name="gambar_1" class="form-control" placeholder="Masukan Nama Gambar 1" value="<?= $data_destinasi["gambar_1"] ?>"/>
             </div>
 
             <div class="form-group">
                 <label>Gambar 2:</label>
-                <input type="text" name="gambar_2" class="form-control" placeholder="Masukan Nama Gambar 2" required value="<?= $data_destinasi["gambar_2"] ?>"/>
+                <input type="text" name="gambar_2" class="form-control" placeholder="Masukan Nama Gambar 2" value="<?= $data_destinasi["gambar_2"] ?>"/>
             </div>
 
             <div class="form-group">
                 <label>Gambar 3:</label>
-                <input type="text" name="gambar_3" class="form-control" placeholder="Masukan Nama Gambar 3" required value="<?= $data_destinasi["gambar_3"] ?>"/>
+                <input type="text" name="gambar_3" class="form-control" placeholder="Masukan Nama Gambar 3" value="<?= $data_destinasi["gambar_3"] ?>"/>
             </div>
 
             <div class="Penjelasan Detail">

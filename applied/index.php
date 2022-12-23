@@ -25,7 +25,7 @@ include_once('koneksi.php');
                 <nav class="col-4 offset-2">
                     <ul>
                         <li class="orange-text">Home</li>
-                        <li class="top-links">Content 1</li>
+                        <li class="top-links">Destination</li>
                         <li class="top-links">Content 2</li>
                         <li class="top-links">About us</li>
                     </ul>
@@ -42,9 +42,9 @@ include_once('koneksi.php');
             <div class="col-5 offset-1">
                 <div class="top-words">
                     <h4 class="grey-text">Hello, We're</h4>
-                    <h1 class="white-text">NGLMERIAH</h1>
+                    <h1 class="text-white">NGLMERIAH</h1>
                     <h4 class="orange-text">Your Travel Mate</h4>
-                    <h6 class="white-text">Butuh melepaskan diri dari kesibukan dan healing? pas banget, NGLMERIAH
+                    <h6 class="text-white">Butuh melepaskan diri dari kesibukan dan healing? pas banget, NGLMERIAH
                         menyediakan layanan
                         travel, ke
                         seluruh Indonesia, untuk membantu anda melepas rasa penat. kami membantu anda dalam memilih
@@ -69,7 +69,7 @@ include_once('koneksi.php');
         </div>
         <div class="row mt-5">
             <div class="col-8 offset-2">
-                <div id="carouselExampleCaptions" class="carousel" data-bs-ride="false">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -88,37 +88,37 @@ include_once('koneksi.php');
                         while ($data = mysqli_fetch_array($hasil)) {
                             if ($caroIndex === 0) {
                         ?>
-                                <div class="carousel-item active">
-                                    <div class="img-caro">
-                                        
+                                <a href="destination.php?id_destinasi=<?= $data['id_destinasi'] ?>">
+                                    <div class="carousel-item active">
+                                        <img src="images/<?= $data['gambar_1'] ?>" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5 class="mb-5"><?= $data['nama_destinasi'] ?></h5>
+                                            <p><?= $data['penjelasan_singkat'] ?></p>
+                                        </div>
                                     </div>
-                                    <img src="images/<?= $data['gambar_1'] ?>" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5 class="mb-5"><?= $data['nama_destinasi'] ?></h5>
-                                        <p><?= $data['penjelasan_singkat'] ?></p>
-                                    </div>
-                                </div>
+                                </a>
                             <?php
                             } else {
                             ?>
-                                <div class="carousel-item">
-                                    <img src="images/<?= $data['gambar_1'] ?>" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5 class="mb-5"><?= $data['nama_destinasi'] ?></h5>
-                                        <p><?= $data['penjelasan_singkat'] ?></p>
+                                <a href="destination.php?id_destinasi=<?= $data['id_destinasi'] ?>">
+                                    <div class="carousel-item">
+                                        <img src="images/<?= $data['gambar_1'] ?>" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5 class="mb-5"><?= $data['nama_destinasi'] ?></h5>
+                                            <p><?= $data['penjelasan_singkat'] ?></p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             <?php
                             }
                             ?>
 
                         <?php
-                        $caroIndex+=1;
+                            $caroIndex += 1;
                         }
                         ?>
-
-
                     </div>
+
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -137,73 +137,106 @@ include_once('koneksi.php');
         <h2 class="text-center mt-5">Dapatkan <span class="orange-text">Paket</span> Dan <span class="orange-text">Promo
                 Menarik</span></h2>
         <div class="row mt-5">
-            <div class="col-3 offset-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="images/puncak-main.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <button type="button" class="btn btn-warning " style="color: white;">order</button>
+            <?php
+            $sql = "SELECT * FROM paket_service
+                        ORDER BY RAND() 
+                        LIMIT 3
+                        ";
+            $hasil = mysqli_query($conn, $sql);
+
+            $cardIndex = 0;
+            while ($data_card = mysqli_fetch_array($hasil)) {
+
+                if ($cardIndex === 0) {
+            ?>
+                    <div class="col-3 offset-2">
+
+                        <div class="card" style="width: 18rem;">
+                            <img src="images/<?= $data_card['gambar_1_paket_service'] ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $data_card['nama_paket_service'] ?></h5>
+                                <p class="card-text"><?= $data_card['penjelasan_singkat_paket_service'] ?></p>
+                                <a href="paket-service.php?id_paket_service=<?= $data_card['id_paket_service'] ?>">
+                                    <button type="button" class="btn btn-warning " style="color: white;">Dapatkan Sekarang</button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="images/puncak-main.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <button type="button" class="btn btn-warning " style="color: white;">order</button>
+
+                <?php
+                } else {
+                ?>
+                    <div class="col-3">
+
+                        <div class="card" style="width: 18rem;">
+                            <img src="images/<?= $data_card['gambar_1_paket_service'] ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $data_card['nama_paket_service'] ?></h5>
+                                <p class="card-text"><?= $data_card['penjelasan_singkat_paket_service'] ?></p>
+                                <a href="paket-service.php?id_paket_service=<?= $data_card['id_paket_service'] ?>">
+                                    <button type="button" class="btn btn-warning " style="color: white;">Dapatkan Sekarang</button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="images/puncak-main.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <button type="button" class="btn btn-warning " style="color: white;">order</button>
-                    </div>
-                </div>
-            </div>
+
+            <?php
+                }
+                $cardIndex += 1;
+            }
+            ?>
         </div>
 
         <div class="reveal">
-            <h3 class="text-center mt-5">Promo <span class="orange-text">Akhir Tahun</span></h3>
-            <div class="row">
-                <div class="col-3 offset-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/puncak-main.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                            <button type="button" class="btn btn-warning " style="color: white;">order</button>
+            <h3 class="text-center mt-200">Promo <span class="orange-text">Akhir Tahun</span></h3>
+            <div class="row"><?php
+            $sql = "SELECT * FROM paket_service
+                        ORDER BY RAND() 
+                        LIMIT 2
+                        ";
+            $hasil = mysqli_query($conn, $sql);
+
+            $cardIndex = 0;
+            while ($data_card = mysqli_fetch_array($hasil)) {
+
+                if ($cardIndex === 0) {
+            ?>
+                    <div class="col-3 offset-3">
+
+                        <div class="card" style="width: 18rem;">
+                            <img src="images/<?= $data_card['gambar_1_paket_service'] ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $data_card['nama_paket_service'] ?></h5>
+                                <p class="card-text"><?= $data_card['penjelasan_singkat_paket_service'] ?></p>
+                                <a href="paket-service.php?id_paket_service=<?= $data_card['id_paket_service'] ?>">
+                                    <button type="button" class="btn btn-warning " style="color: white;">Dapatkan Sekarang</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/puncak-main.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                            <button type="button" class="btn btn-warning " style="color: white;">order</button>
+
+                <?php
+                } else {
+                ?>
+                    <div class="col-3">
+
+                        <div class="card" style="width: 18rem;">
+                            <img src="images/<?= $data_card['gambar_1_paket_service'] ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $data_card['nama_paket_service'] ?></h5>
+                                <p class="card-text"><?= $data_card['penjelasan_singkat_paket_service'] ?></p>
+                                <a href="paket-service.php?id_paket_service=<?= $data_card['id_paket_service'] ?>">
+                                    <button type="button" class="btn btn-warning " style="color: white;">Dapatkan Sekarang</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+            <?php
+                }
+                $cardIndex += 1;
+            }
+            ?>
             </div>
         </div>
 

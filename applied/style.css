@@ -32,6 +32,18 @@ body {
     cursor: pointer;
 }
 
+
+.top-links-dark{
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+
+.top-links-dark:hover {
+    color: #ffa500;
+    cursor: pointer;
+}
+
 .orange-text {
     color: #ffa500
 }
@@ -201,4 +213,10 @@ nav li {
 
 .h-500{
     height: 500px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
